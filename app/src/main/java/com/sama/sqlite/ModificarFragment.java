@@ -1,9 +1,13 @@
 package com.sama.sqlite;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,13 +16,20 @@ import android.widget.Toast;
  * Created by uca on 05-16-18.
  */
 
-public class ModificarActivity extends AppCompatActivity {
+public class ModificarFragment extends Fragment {
     private EditText id,nombre,nota;
     private Button guardar,eliminar,clean,buscar;
+    View v;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.activity_modificar,container,false);
         inicializarControles();
 
         guardar.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +62,7 @@ public class ModificarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Estudiante p= DBHelper.mydb.findUser(id.getText().toString());
                 if(p==null){
-                    Toast.makeText(getApplicationContext(),"usuario no encontrado",Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity(),"usuario no encontrado",Toast.LENGTH_SHORT);
                     limpiar();
                 }else{
 
@@ -61,6 +72,7 @@ public class ModificarActivity extends AppCompatActivity {
             }
         });
 
+        return v;
     }
 
     public void limpiar(){
@@ -69,12 +81,12 @@ public class ModificarActivity extends AppCompatActivity {
         nota.setText("");
     }
     public void inicializarControles(){
-        id = findViewById(R.id.id_txt);
-        nombre = findViewById(R.id.name_txt);
-        guardar = findViewById(R.id.guardar);
-        eliminar = findViewById(R.id.eliminar);
-        clean = findViewById(R.id.limpiar);
-        buscar = findViewById(R.id.buscar_boton);
-        nota = findViewById(R.id.nota_txt);
+        id = v.findViewById(R.id.id_txt);
+        nombre = v.findViewById(R.id.name_txt);
+        guardar = v.findViewById(R.id.guardar);
+        eliminar = v.findViewById(R.id.eliminar);
+        clean = v.findViewById(R.id.limpiar);
+        buscar = v.findViewById(R.id.buscar_boton);
+        nota = v.findViewById(R.id.nota_txt);
     }
 }
