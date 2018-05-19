@@ -1,6 +1,5 @@
 package com.sama.sqlite;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,7 +23,7 @@ public class RegistrarActivity extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean flag = DBHelper.mydb.add(new Persona(id.getText().toString(),nombre.getText().toString()));
+                boolean flag = DBHelper.mydb.add(new Estudiante(nombre.getText().toString(),id.getText().toString(), "0"));
                 if(flag){
                     Log.d("ADD", nombre.getText().toString());
                 }

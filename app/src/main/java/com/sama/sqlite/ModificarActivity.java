@@ -13,19 +13,20 @@ import android.widget.Toast;
  */
 
 public class ModificarActivity extends AppCompatActivity {
-    EditText id,nombre;
-    Button guardar,eliminar,clean,buscar;
+    private EditText id,nombre,nota;
+    private Button guardar,eliminar,clean,buscar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar);
         inicializarControles();
+
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean flag = DBHelper.mydb.editUser(new Persona(id.getText().toString(),nombre.getText().toString()));
+                boolean flag = DBHelper.mydb.editUser(new Estudiante(nombre.getText().toString(),id.getText().toString(),nota.getText().toString()));
                 if(flag){
-                    Log.d("EDIT", nombre.getText().toString());
+                    Log.d("EDITED", nombre.getText().toString());
                 }
             }
         });
@@ -33,7 +34,7 @@ public class ModificarActivity extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper.mydb.deleteUser(nombre.getText().toString());
+                DBHelper.mydb.deleteUser(id.getText().toString());
                 limpiar();
             }
         });
@@ -48,12 +49,14 @@ public class ModificarActivity extends AppCompatActivity {
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Persona p= DBHelper.mydb.findUser(id.getText().toString());
+                Estudiante p= DBHelper.mydb.findUser(id.getText().toString());
                 if(p==null){
                     Toast.makeText(getApplicationContext(),"usuario no encontrado",Toast.LENGTH_SHORT);
                     limpiar();
                 }else{
+
                     nombre.setText(p.getNombre());
+                    nota.setText(p.getNota());
                 }
             }
         });
@@ -63,6 +66,7 @@ public class ModificarActivity extends AppCompatActivity {
     public void limpiar(){
         nombre.setText("");
         id.setText("");
+        nota.setText("");
     }
     public void inicializarControles(){
         id = findViewById(R.id.id_txt);
@@ -71,5 +75,6 @@ public class ModificarActivity extends AppCompatActivity {
         eliminar = findViewById(R.id.eliminar);
         clean = findViewById(R.id.limpiar);
         buscar = findViewById(R.id.buscar_boton);
+        nota = findViewById(R.id.nota_txt);
     }
 }

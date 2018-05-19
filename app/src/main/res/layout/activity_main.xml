@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/registrar_usuario"
-        android:layout_above="@+id/modificar"
+        android:layout_above="@+id/ver_notas"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp" />
 
     <Button
-        android:id="@+id/modificar"
+        android:id="@+id/ver_notas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/modificar_usuario"
+        android:text="@string/modificar_nota"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_margin="10dp"/>
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/consultar_lista_de_usuarios"
-        android:layout_below="@+id/modificar"
+        android:layout_below="@+id/ver_notas"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
          />

@@ -2,13 +2,15 @@
     <string name="app_name">SQLite</string>
     <string name="action_sign_in">Log in</string>
     <string name="registrar_usuario">Registrar</string>
-    <string name="modificar_usuario">MODIFICAR</string>
+    <string name="modificar_nota">MODIFICAR</string>
     <string name="consultar_lista_de_usuarios">CONSULTAR</string>
     <string name="guardar">Guardar</string>
     <string name="eliminar">Eliminar</string>
     <string name="limpiar">Limpiar</string>
     <string name="registrar">Registrar</string>
-    <string name="dui">DUI</string>
+    <string name="dui">CARNET</string>
     <string name="nombre">NOMBRE</string>
-    <string name="Buscar">Buscar</string>
+    <string name="Buscar">BUSCAR</string>
+    <string name="promedio">Promedio</string>
+    <string name="nota">NOTA</string>
 </resources>
