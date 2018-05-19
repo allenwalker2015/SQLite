@@ -40,6 +40,15 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        if(lf==null)lf = new ListaFragment();
+        f = lf;
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frag_container,f);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+
     }
 
     @Override
